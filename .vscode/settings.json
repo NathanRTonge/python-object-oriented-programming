@@ -17,8 +17,7 @@
   "files.autoSave": "afterDelay",
   "screencastMode.onlyKeyboardShortcuts": true,
   "terminal.integrated.fontSize": 18,
-  "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Default Light Modern",
+  "workbench.colorTheme": "GitHub Dark Dimmed",
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": true,
   "python.linting.enabled": false
