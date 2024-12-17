@@ -1,6 +1,7 @@
-# Python Object Oriented Programming by Joe Marini course example
-# Checking class types and instances
-
+"""
+Python Object Oriented Programming by Joe Marini
+Checking class types and instances
+"""
 
 class Book:
     def __init__(self, title):
@@ -12,26 +13,25 @@ class Newspaper:
         self.name = name
 
 
-# Create some instances of the classes
+#Create some instances of the classes
 b1 = Book("The Catcher In The Rye")
 b2 = Book("The Grapes of Wrath")
 n1 = Newspaper("The Washington Post")
 n2 = Newspaper("The New York Times")
 
-#use type() to inspect the object type
+#Use type() to inspect the object type
 print(type(b1)) #gives type book
 print(type(n2)) #gives type newspaper
 print('')
 
-#compare two types together
+#Compare two types together
 print(type(b1) == type(b2)) #will give True as both books
 print(type(b1) == type(n1)) #gives False as 1 newspaer other book
 print('')
 
-#use isinstance(object, Class) to compare an instance to a type
+#Use isinstance(object, Class) to compare an instance to a type
 print( isinstance(b1,Book) ) #True
 print( isinstance(n1,Newspaper) ) #True
 print( isinstance(n2,Book) ) #False
 print( isinstance(n2,object) ) #True
-# For object, all classes are a subclass of object so this will
-# always be True
+#for object, all classes are a subclass of object so this will always be True

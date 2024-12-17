@@ -1,10 +1,11 @@
-# Python Object Oriented Programming by Joe Marini course example
-# Using class-level and static methods
-
+"""
+Python Object Oriented Programming by Joe Marini
+Using class-level and static methods
+"""
 
 class Book:
-    #Properties defined at the class level are shared by all instances
-    BOOK_TYPES = ('HARDCOVER', 'PAPERBACK', 'EBOOK') #caps as class attribute
+    #properties defined at the class level are shared by all instances
+    BOOK_TYPES = ('HARDCOVER', 'PAPERBACK', 'EBOOK') #(caps as class attribute)
     
     #double-underscore properties are hidden from other classes
     #as this varible is about this class, it should be contained in it
@@ -15,16 +16,15 @@ class Book:
     def get_book_types(cls):
         return cls.BOOK_TYPES
 
-    #create a static method (dont modify state of cls or instance)
-    # good for if no cls or self attribute needed & func is about the class
+    #Create a static method (doesn't modify state of class or instance)
+    #good for if no cls or self attribute needed & func is about the class
     def getbooklist():
         if Book.__booklist == None:
             Book.__booklist = []
         return Book.__booklist
 
-
-    # instance methods receive a specific object instance as an argument
-    # and operate on data specific to that object instance (have self)
+    #instance methods receive a specific object instance as an argument
+    #and operate on data specific to that object instance (have self)
     def set_title(self, newtitle):
         self.title = newtitle
 
@@ -36,7 +36,7 @@ class Book:
             self.booktype = booktype
 
 
-#access the class attribute
+#Access the class attribute
 print('Book types: ', Book.get_book_types())
 
 #Create some book instances
