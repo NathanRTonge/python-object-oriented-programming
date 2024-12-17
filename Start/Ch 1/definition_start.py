@@ -2,10 +2,17 @@
 # Basic class definitions
 
 
-# TODO: create a basic class
+#create a basic class
+class Book:
+    def __init__(self,title): #initialsier func
+        self.title = title
 
 
-# TODO: create instances of the class
+#create instances of the class
+book1 = Book('1984')
+book2 = Book('Animal Farm')
 
 
-# TODO: print the class and property
+#print the class and property
+print(book1)
+print(book1.title)
