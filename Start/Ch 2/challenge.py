@@ -1,25 +1,49 @@
-# Python Object Oriented Programming by Joe Marini course example
-# Programming challenge: use inheritance and abstract classes
+"""
+Python Object Oriented Programming by Joe Marini
+Programming challenge: use inheritance and abstract classes
 
-# Challenge: create a class structure to represent stocks and bonds
-# Requirements:
+Challenge: create a class structure to represent stocks and bonds
+Requirements:
 # -- Both stocks and bonds have a price
 # -- Stocks have a company name and ticker
 # -- Bonds have a description, duration, and yield
 # -- You should not be able to instantiate the base class
 # -- Subclasses are required to override get_description()
 # -- get_description returns formats for stocks and bonds
-# For stocks: "Ticker: Company -- $Price"
-# For bonds: "description: duration'yr' : $price : yieldamt%"
+For stocks: "Ticker: Company -- $Price"
+For bonds: "description: duration'yr' : $price : yieldamt%"
+"""
+from abc import ABC, abstractmethod
 
-class Asset():
-    pass
+class Asset(ABC):
+    def __init__(self, price):
+        self.price = price
+    
+    @abstractmethod
+    def get_description(self):
+        pass
 
-class Stock():
-    pass
+class Stock(Asset):
+    def __init__(self, ticker, price, company):
+        super().__init__(price)
+        self.ticker = ticker
+        self.company = company
 
-class Bond():
-    pass
+    def get_description(self):
+        return f'{self.ticker}: {self.company} -- ${self.price:.2f}'
+
+class Bond(Asset):
+    def __init__(self, price, desc, duration, y):
+        super().__init__(price)
+        self.desc = desc
+        self.duration = duration
+        self.y = y
+    
+    def get_description(self):
+        return f'{self.desc} : {self.duration}yr : ${self.price:.2f} : \
+{self.y}%'
+
+
 
 
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~

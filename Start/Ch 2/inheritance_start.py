@@ -1,33 +1,45 @@
-# Python Object Oriented Programming by Joe Marini course example
-# Understanding class inheritance
+"""
+Python Object Oriented Programming by Joe Marini
+Understanding class inheritance
 
+Instead of repeatin self.title = title, self.price = price etc.,
+we can use inheritance and the super() func to condense the code
+"""
 
-class Book:
-    def __init__(self, title, author, pages, price):
+#This creates a super class that all others will draw from
+class Publication:
+    def __init__(self, title, price):
         self.title = title
         self.price = price
+
+#A subclass that includes the publisher and period of release
+class Periodical(Publication):
+    def __init__(self, title, price, publisher, period):
+        super().__init__(title, price)
+        self.period = period
+        self.publisher = publisher
+
+#All other subcasses can inherit code from those above with the 
+#super().__init__() func
+class Book(Publication):
+    def __init__(self, title, author, pages, price):
+        super().__init__(title,price)
         self.author = author
         self.pages = pages
 
 
-class Magazine:
+class Magazine(Periodical):
     def __init__(self, title, publisher, price, period):
-        self.title = title
-        self.price = price
-        self.period = period
-        self.publisher = publisher
+        super().__init__(title, price, publisher, period)
 
 
-class Newspaper:
+class Newspaper(Periodical):
     def __init__(self, title, publisher, price, period):
-        self.title = title
-        self.price = price
-        self.period = period
-        self.publisher = publisher
+        super().__init__(title, price, publisher, period)
 
 
-b1 = Book("Brave New World", "Aldous Huxley", 311, 29.0)
-n1 = Newspaper("NY Times", "New York Times Company", 6.0, "Daily")
+b1 = Book("Brave New World", "Aldous Huxley", 311, 12.00)
+n1 = Newspaper("NY Times", "New York Times Company", 6.00, "Daily")
 m1 = Magazine("Scientific American", "Springer Nature", 5.99, "Monthly")
 
 print(b1.author)
