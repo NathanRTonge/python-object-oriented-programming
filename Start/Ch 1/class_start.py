@@ -29,7 +29,7 @@ class Book:
         self.title = newtitle
 
     def __init__(self, title, booktype):
-        self.title = title #title is an instance varible as it is uniqe to each instance
+        self.title = title #title is an instance varible as it is unique to each instance
         if (not booktype in Book.BOOK_TYPES):
             raise ValueError(f'{booktype} is not a valid booktype!')
         else:
