@@ -1,9 +1,11 @@
-# Python Object Oriented Programming by Joe Marini course example
+"""
+Python Object Oriented Programming by Joe Marini course example
 # Programming challenge: add methods for comparison and equality
 
-# Challenge: use a magic method to make stocks and bonds sortable
+Challenge: use a magic method to make stocks and bonds sortable
 # Stocks should sort from low to high on price
 # Bonds should sort from low to high on yield
+"""
 
 from abc import ABC, abstractmethod
 
@@ -22,14 +24,27 @@ class Stock(Asset):
         super().__init__(price)
         self.company = company
         self.ticker = ticker
+    
+    def __lt__(self, othr_stock):
+        return self.price < othr_stock.price
+    
+    def __str__(self):
+        return f'{self.ticker}: {self.company} -- ${self.price:.2f}'
 
 
 class Bond(Asset):
-    def __init__(self, price, description, duration, yieldamt):
+    def __init__(self, price, desc, duration, yieldamt):
         super().__init__(price)
-        self.description = description
+        self.desc = desc
         self.duration = duration
         self.yieldamt = yieldamt
+
+    def __lt__(self, othr_bond):
+        return self.yieldamt < othr_bond.yieldamt
+    
+    def __str__(self):
+        return f'{self.desc} : {self.duration}yr : ${self.price:.2f} : \
+{self.yieldamt}%'
 
 
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~
