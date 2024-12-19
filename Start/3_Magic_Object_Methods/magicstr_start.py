@@ -1,6 +1,7 @@
-# Python Object Oriented Programming by Joe Marini course example
-# Using the __str__ and __repr__ magic methods
-
+"""
+Python Object Oriented Programming by Joe Marini
+Using the __str__ and __repr__ magic methods
+"""
 
 class Book:
     def __init__(self, title, author, price):
