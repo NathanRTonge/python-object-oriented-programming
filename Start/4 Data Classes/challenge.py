@@ -1,27 +1,45 @@
-# Python Object Oriented Programming by Joe Marini course example
-# Programming challenge: implement a dataclass
+"""
+Python Object Oriented Programming by Joe Marini
+Programming challenge: implement a dataclass
 
-# Challenge: convert your classes to dataclasses
+Challenge: convert your classes to dataclasses
 # The subclasses are required to override the magic method
 # that makes them sortable
+"""
+from dataclasses import dataclass
+from abc import ABC, abstractmethod
 
-class Asset():
-    pass
+@dataclass
+class Asset(ABC):
+    price: float
+
+    @abstractmethod
+    def __lt__(self, other):
+       pass
     
-
+@dataclass
 class Stock(Asset):
-    pass
+    ticker: str
+    company: str
 
+    def __lt__(self, other):
+       return self.price < other.price
 
+@dataclass
 class Bond(Asset):
-    pass
+    description: str
+    duration: int
+    yieldamt: float
+
+    def __lt__(self, other):
+       return self.yieldamt < other.yieldamt
 
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~
 stocks = [
-    Stock("MSFT", 342.0, "Microsoft Corp"),
-    Stock("GOOG", 135.0, "Google Inc"),
-    Stock("META", 275.0, "Meta Platforms Inc"),
-    Stock("AMZN", 120.0, "Amazon Inc")
+    Stock(342.0, "MSFT", "Microsoft Corp"),
+    Stock(135.0, "GOOG", "Google Inc"),
+    Stock(275.0, "META", "Meta Platforms Inc"),
+    Stock(120.0, "AMZN", "Amazon Inc")
 ]
 
 bonds = [
